@@ -18,6 +18,7 @@ export class CardForm extends Component {
       );
       console.log(response);
       this.props.searcedUser(response);
+
     } catch (err) {
       //err.response.data
       console.log({
@@ -25,6 +26,7 @@ export class CardForm extends Component {
         docsUrl: err.response.data.documentation_url
       });
     }
+  
   };
 
   // handles the form submit action
