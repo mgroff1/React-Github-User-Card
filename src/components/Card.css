@@ -1,0 +1,80 @@
+
+body{
+  display:flex;
+  justify-content: space-around;
+  background:rgba(35,35,35,1);
+}
+
+#main{
+  background:rgba(65,65,65,.5);
+  padding:20px;
+  width:auto;
+  box-shadow:inset 1px 1px 6px 1px black;
+  border-radius: 3px;
+  border:1px inset red;
+}
+
+.input-name{
+    border-radius: 3px;
+    box-shadow:inset 1px 1px 6px 1px black;
+  font-size:26px;
+}
+
+.submit-name{
+    border-radius: 3px;
+    box-shadow:1px 1px 6px 1px black;
+font-size:26px;
+}
+.header{
+  font-size:38px;
+  text-align: center;
+    box-shadow:1px 1px 6px 1px black;
+}
+.img{
+  box-shadow:1px 1px 6px 1px black;
+  width:300px;
+  height:300px;
+  margin: 20px;
+}
+
+.info{
+
+}
+
+.name{
+
+}
+
+.company{
+
+
+}
+
+.type{
+
+
+}
+
+.location{
+
+
+}
+
+.followers{
+
+
+}
+
+.repolink{
+
+
+}
+
+.public_repos{
+
+
+}
+
+.bio{
+
+}
