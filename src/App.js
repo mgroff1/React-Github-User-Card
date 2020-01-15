@@ -2,15 +2,28 @@ import React, {Component} from "react";
 import {CardHeader} from "./components/CardHeader";
 import {CardForm} from "./components/CardForm";
 import {CardList} from "./components/CardList";
-import {CardMessage} from "./components/CardMessage";
+import {UserForm} from "./components/UserForm";
+import {CardMessage} from "./components/CardMessage.js";
+import axios from "axios";
 
 export class App extends Component {
   // initialize data
   state = {
     profiles: [],
-    selectedName: ""
+    selectedName: "",
+    followers: []
   };
 
+    fetchUser = () =>{
+      axios
+      .get("https://api.github.com/users/mgroff1/followers")
+      .then(res => {
+        this.setState({ ...this.state, followers: res.data });
+      })
+      .catch(err => {
+        console.log("Can't get followers", err);
+      });
+  };
   // callback handling selected name
   callBackSelectedName = name => {
     this.setState({ selectedName: name });
@@ -23,6 +36,12 @@ export class App extends Component {
     }));
   };
 
+
+componentDidMount() {
+  this.fetchUser();
+}
+
+
   render() {
     return (
       <div>
@@ -34,6 +53,12 @@ export class App extends Component {
         />
         <hr />
         <CardMessage msg={this.state.selectedName} />
+        <UserForm
+          key={this.id}
+          img={this.avatar_url}
+          followers={this.login}
+          bio={this.bio}
+        />
       </div>
     );
   }
