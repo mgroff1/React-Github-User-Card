@@ -18,10 +18,10 @@ export class CardForm extends Component {
         `https://api.github.com/users/${searchName}`
       );
       console.log(response);
-      this.props.searcedUser(response);
+      this.props.searchedUser(response);
 
     } catch (err) {
-      //err.response.data
+
       console.log({
         message: err.response.data.message,
         docsUrl: err.response.data.documentation_url
@@ -30,13 +30,13 @@ export class CardForm extends Component {
 
   };
 
-  // handles the form submit action
+
   handlerFormSubmit = event => {
     event.preventDefault();
     const searchName = this.state.inputName;
     this.setState({ inputName: "" });
 
-    // async http get from guithub api
+
     this.getApiGitHubUser(searchName);
   };
 

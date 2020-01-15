@@ -7,16 +7,23 @@ import {CardMessage} from "./components/CardMessage.js";
 import axios from "axios";
 
 export class App extends Component {
-  // initialize data
+
   state = {
     profiles: [],
     selectedName: "",
-    followers: []
+    followers: [],
+
+  }
+
+  // update the name state with the new input name
+  getNewName = name => {
+    this.setState({ inputName: name });
+
   };
 
     fetchUser = () =>{
       axios
-      .get("https://api.github.com/users/mgroff1/followers")
+      .get(`https://api.github.com/users/${this.props.name}/followers`)
       .then(res => {
         this.setState({ ...this.state, followers: res.data });
       })
@@ -24,21 +31,13 @@ export class App extends Component {
         console.log("Can't get followers", err);
       });
   };
-  // callback handling selected name
-  callBackSelectedName = name => {
+  findName = name => {
     this.setState({ selectedName: name });
   };
 
-  // callback handling axios promisse from github user search api
-  callBackSearchUser = user => {
-    this.setState(prevState => ({
-      profiles: [...prevState.profiles, user.data]
-    }));
-  };
-
-
 componentDidMount() {
   this.fetchUser();
+
 }
 
 
@@ -46,10 +45,10 @@ componentDidMount() {
     return (
       <div>
         <CardHeader title="The GitHub User Card" />
-        <CardForm searcedUser={this.callBackSearchUser} />
+        <CardForm searchedUser={this.callBackSearchUser} />
         <CardList
           profiles={this.state.profiles}
-          onSelectName={this.callBackSelectedName}
+          onSelectName={this.findName}
         />
         <hr />
         <CardMessage msg={this.state.selectedName} />

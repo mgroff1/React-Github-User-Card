@@ -13,6 +13,16 @@ body{
   border-radius: 3px;
   border:1px inset red;
 }
+.App{
+  width:100vw;
+}
+
+#flex{
+  display:flex;
+  flex-wrap:wrap;
+  width:10vw;
+
+}
 
 .input-name{
     border-radius: 3px;
